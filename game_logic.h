@@ -13,20 +13,19 @@
 #define SNAKE_MAX_LENGTH (size_t)(GAME_WIDTH*GAME_HEIGHT/GAME_SCALE/GAME_SCALE)
 
 static u8 running = 1;
-
 enum directions {UP, DOWN, LEFT, RIGHT, NEUTRAL};
 struct point {
   i32 x;
   i32 y;
 };
-
-
 static u16 score = 0;
 static size_t snake_length = 1;
 static struct point snake[SNAKE_MAX_LENGTH];
 static struct point apple;
 static u8 snake_xdir = RIGHT;
 static u8 snake_ydir = NEUTRAL;
+
+
 
 int random_int(int min, int max) {
   return min + rand() % (max - min + 1);
@@ -113,7 +112,6 @@ void check_collisions() {
       if (apple.x == snake[i].x && apple.y == snake[i].y) {
         apple.x = random_int(0, (GAME_WIDTH / GAME_SCALE) - 1) * GAME_SCALE;
         apple.y = random_int(1, (GAME_HEIGHT / GAME_SCALE) - 1) * GAME_SCALE;
-
         i = 0;
       }
     }
