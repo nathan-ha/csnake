@@ -1,1 +1,1 @@
-gcc main.c -lopengl32 -lgdi32
+gcc main.c -lopengl32 -lgdi32 -O3

@@ -131,4 +131,20 @@ void check_collisions() {
   
 }
 
+void display_death_message(RGFW_window* win, char* windowTitle) {
+  while (!running) {
+    // died
+    snprintf(windowTitle, 128, "YOU DIED with a score of %d - Press 'r' to restart, or 'esc' to quit", score);
+    RGFW_window_setName(win, windowTitle);
+    while (RGFW_window_checkEvent(win)) {
+        if (RGFW_isPressed(win, 'r')) {
+            init_snake_game();
+            break;
+        } else if (win->event.type == RGFW_quit || RGFW_isPressed(win, RGFW_escape)) {
+            exit(0);
+        }
+    }
+  }
+}
+
 #endif
